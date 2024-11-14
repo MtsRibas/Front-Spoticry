@@ -35,7 +35,7 @@ const BotaoFechar = styled.button`
   color: ${Colors.Branco};
 `;
 
-export function Modal({ aberto, fechado, conteudoModal }) {
+export function ModalMusic({ aberto, fechado, conteudoModal }) {
   if (!aberto) return null;
 
   return (
@@ -47,3 +47,4 @@ export function Modal({ aberto, fechado, conteudoModal }) {
     </Aberto>
   );
 }
+export default ModalMusic;

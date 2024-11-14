@@ -30,6 +30,9 @@ const Inputs = styled.input`
   align-items: center;
   gap: 10px;
   border-radius: 10px;
+  background-color: ${Colors.Cinza};
+  color: ${Colors.Branco};
+  border: none;
   &:hover {
     border: 2px solid ${Colors.Branco};
     cursor: pointer;
@@ -48,6 +51,7 @@ const Botao = styled.button`
   align-items: center;
   justify-content: center;
   gap: 10px;
+  border: none;
   &:hover {
     cursor: pointer;
     background-color: ${Colors.Laranja};

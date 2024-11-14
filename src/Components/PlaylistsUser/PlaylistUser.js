@@ -8,6 +8,7 @@ import styled from "styled-components";
 import adicionar from "../img/adicionar.svg";
 import { Colors } from "../Colors/Colors";
 import detalheModal from "../img/btnIcon.svg";
+import { useNavigate } from "react-router-dom";
 
 const Titulo = styled.div`
   display: flex;
@@ -37,6 +38,7 @@ const Input = styled.input`
   background-color: ${Colors.Cinza};
   padding: 21px;
   border-radius: 16px;
+  color: ${Colors.Branco};
 `;
 const TituloModal = styled.div`
   display: flex;
@@ -52,9 +54,11 @@ const BotaoEnviar = styled.button`
   border: none;
   border-radius: 32px;
   padding: 16px 48px;
+  color: ${Colors.Branco};
   &:hover {
     background-color: ${Colors.Laranja};
     cursor: pointer;
+    color: ${Colors.Preto};
   }
 `;
 
@@ -63,6 +67,7 @@ export function PlaylistUser() {
   const [descricaoPlaylist, setDescricaoPlaylist] = useState("");
   const [ModalOpen, setModalOpen] = useState(false);
   const [playlists, setPlaylists] = useState([]);
+  const navigate = useNavigate();
 
   const buscarPlaylists = async (userId, token) => {
     try {
@@ -120,6 +125,7 @@ export function PlaylistUser() {
       console.log("API Response:", response.data);
 
       buscarPlaylists(userId, token);
+      navigate("/playlists"); // Redireciona para playlists após a criação
     } catch (error) {
       console.log("Erro ao criar playlist:", error.response);
     }
@@ -162,15 +168,15 @@ export function PlaylistUser() {
               <h2>Criar Playlist</h2>
             </TituloModal>
 
-            <Form onSubmit={onClickCreatePlaylist}>
+            <Form onSubmit={(e) => e.preventDefault()}>
               <Separacao>
                 <label>Qual será o nome da Playlist?</label>
                 <Input
                   type="text"
                   value={novaPlaylist}
                   onChange={(e) => setNovaPlaylist(e.target.value)}
-                  placeholder="New playlist name"
-                  aria-label="Playlist Name"
+                  placeholder="Nome da playlist"
+                  aria-label="Nome da playlist"
                 />
               </Separacao>
 
@@ -179,10 +185,12 @@ export function PlaylistUser() {
                 type="text"
                 value={descricaoPlaylist}
                 onChange={(e) => setDescricaoPlaylist(e.target.value)}
-                placeholder="New playlist description"
-                aria-label="Playlist Description"
+                placeholder="Descricao Playlist"
+                aria-label="Descricao Playlist"
               />
-              <BotaoEnviar type="submit">Save Playlist</BotaoEnviar>
+              <BotaoEnviar type="button" onClick={onClickCreatePlaylist}>
+                Save Playlist
+              </BotaoEnviar>
             </Form>
           </>
         }

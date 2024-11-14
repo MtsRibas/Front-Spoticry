@@ -6,8 +6,6 @@ import foguinho from "../img/fireIcon.svg";
 import { NavTeste } from "../NavTeste/NavTeste";
 import { Colors } from "../Colors/Colors";
 
-
-
 const Banner = styled.div`
   display: flex;
   background: url("https://www.designi.com.br/images/preview/10902675.jpg")
@@ -169,7 +167,6 @@ export function Home() {
       setPaginaAtualEmAlta(paginaAtualEmAlta - 1);
     }
   };
-
 
   const proxPagUltimasMusicas = () => {
     if (paginaAtualUltimasMusicas < totalPaginasUltimasMusicas) {
